@@ -35,6 +35,7 @@
           class="input_form"
         >
 
+        <span class="pswd_valid"></span>
         <a href="#" class="frgt_pswd">Forgot your password?</a>
       </div>
       
@@ -90,6 +91,7 @@
 
               <label></label>
               <input
+                id="location_form"
                 type="text"
                 placeholder="New Roads, 70760"
                 class="input_slider"
@@ -101,9 +103,8 @@
             <div class="slider_item_form">
               <p class="form_text">Your email adress</p>
 
-              <label></label>
               <input 
-                id="loginEmail_form"
+                id="email_form"
                 type="email"
                 placeholder="Input your email"
                 class="input_slider"
@@ -115,8 +116,8 @@
             <div class="slider_item_form">
               <p class="form_text">Create your password</p>
 
-              <label></label>
               <input 
+                id="password_form"
                 type="password"
                 placeholder="Input your password"
                 class="input_slider password_form"
@@ -131,7 +132,8 @@
 
     <div class="reg_info">
       <span id="location_info"></span>
-      <span id="registration_error"></span>
+      <span id="email_error"></span>
+      <span id="password_error"></span>
       <span id="password_info"></span>
     </div>
 

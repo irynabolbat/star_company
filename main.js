@@ -1,15 +1,25 @@
-const slides = document.querySelectorAll(".slides li");
 const prevBtn = document.getElementById("prev_btn");
 const nextBtn = document.getElementById("next_btn");
 const startBtn = document.getElementById("start_btn");
+
+const slides = document.querySelectorAll(".slides li");
+const points = document.querySelectorAll(".slider_point");
+
 const loginEmail = document.getElementById("login_email");
-const loginEmailForm = document.getElementById("loginEmail_form");
+const loginPassword = document.getElementById("login_pswd");
 const loginValidation = document.querySelector(".login_valid");
-const registrationError = document.getElementById("registration_error");
+const pswdValidation = document.querySelector(".pswd_valid");
+
+const emailForm = document.getElementById("email_form");
+const passwordForm = document.getElementById("password_form");
+const locationForm = document.getElementById("location_form");
+
+const emailErr = document.getElementById("email_error");
+const passwordErr = document.getElementById("password_error");
 const locationInfo = document.getElementById("location_info");
 const passwordInfo = document.getElementById("password_info");
-const points = document.querySelectorAll(".slider_point");
-const registrationLogin = document.querySelector(".login_form");
+
+const registrationForm = document.querySelector(".login_form");
 
 let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
 let currentIndex = 0;
@@ -30,7 +40,25 @@ function validEmail(emailInput, emailError) {
   })
 }
 
-validEmail(loginEmail, loginValidation);
+function validPassword(password, pswdError) {
+  password.addEventListener("change", () => {
+    if (password.value === "") {
+      return;
+    }
+
+    if (password.value.length < 8) {
+      pswdError.classList.add("error");
+      pswdError.textContent = "Password should have at least 8 characters";
+    } else {
+      pswdError.classList.remove("error");
+      pswdError.textContent = "";
+    }
+  })
+}
+
+validEmail(loginEmail, emailErr);
+
+validPassword(loginPassword, passwordErr)
 
 function showSlide(index) {
   slides.forEach((slide) => (slide.style.display = "none"));
@@ -52,16 +80,19 @@ function showSlide(index) {
     }
 
     if (slides[index].classList.contains("email_adress")) {
-      validEmail(loginEmailForm, registrationError);
+      validEmail(emailForm, emailErr);
     } else {
-      registrationError.classList.remove("error");
-      registrationError.innerHTML = "";
+      emailErr.classList.remove("error");
+      emailErr.innerHTML = "";
     }
 
     if (slides[index].classList.contains("password_reg")) {
+      validPassword(passwordForm, passwordErr)
       passwordInfo.classList.add("info");
       passwordInfo.innerHTML = `<p>By clicking the button above you agree to our <a>Terms of Use</a> \n and <a>Privacy Policy</a> including use of cookies and to receive newsletters,\n account updates and offers sent by StarCompany.</p>`;
     } else {
+      passwordErr.classList.remove("error");
+      passwordErr.innerHTML = "";
       passwordInfo.classList.remove("info");
       passwordInfo.innerHTML = "";
     }
@@ -111,7 +142,7 @@ function sendRequest(data) {
     });
 }
 
-registrationLogin.addEventListener("submit", (event) => {
+registrationForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const passwordInput = document.querySelector("#login_pswd");
 
@@ -127,15 +158,18 @@ startBtn.addEventListener("click", (event) => {
   const selectElement = document.querySelector('.select_position');
   const ageElement = document.querySelector('.select_age');
   const locationInput = document.querySelector('.input_slider');
-  const passwordInput = document.querySelector('.password_form');
 
-  const formData = {
-    occupation: selectElement.value,
-    age: ageElement.value,
-    location: locationInput.value,
-    email: loginEmailForm.value,
-    password: passwordInput.value,
-  };
+  if (locationInput.value.trim() === '' ||emailForm.value.trim() === '' || passwordForm.value.trim() === '') {
+    alert('Please fill in location, email and password fields.');
+  } else {
+    const formData = {
+      occupation: selectElement.value,
+      age: ageElement.value,
+      location: locationInput.value,
+      email: emailForm.value,
+      password: passwordForm.value,
+    };
 
-  sendRequest(formData);
+    sendRequest(formData);
+  }
 });

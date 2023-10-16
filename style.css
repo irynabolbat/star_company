@@ -66,8 +66,12 @@ span {
   padding: 10px;
 }
 
-.login_valid {
+.login_valid, .pswd_valid {
   font-size: 10px;
+}
+
+.pswd_valid {
+  width: 159px;
 }
 
 .frgt_pswd {
