@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StarCompany</title>
   <link rel="stylesheet" href="./style.css"/>
-  <script type="module" src="./main.js"></script>
 </head>
 <body>
   <section class="header">
@@ -58,73 +57,76 @@
         <button id="prev_btn" class="prev_btn">&#60</button>
       </div>
 
-      <ul class="slides">
-        <li class="slider_item">
-          <div class="slider_item_form">
-            <p class="form_text">Who are you?</p>
-
-            <select name="select" class="select_form select_position">
-              <option value="Engineer">Engineer</option>
-              <option value="Business Development Executive">Business Development Executive</option>
-              <option value="Office Manager/PA">Office Manager/PA</option>
-              <option value="Accountant">Accountant</option>
-              <option value="VR Designer">VR Designer</option>
-            </select>
-        </li>
-
-        <li class="slider_item">
-          <div class="slider_item_form">
-            <p class="form_text">What is your age?</p>
-
-            <select name="select" class="select_form select_age">
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21">21</option>
-              <option value="22">22</option>
-            </select>
-        </li>
-
-        <li class="slider_item location">
+      <form class="registration_form">
+        <ul class="slides">
+          <li class="slider_item active">
             <div class="slider_item_form">
-              <p class="form_text">I am from</p>
+              <p class="form_text">Who are you?</p>
 
-              <label></label>
-              <input
-                id="location_form"
-                type="text"
-                placeholder="New Roads, 70760"
-                class="input_slider"
-              >
-          </div>
-        </li>
+              <select name="select" class="select_form select_position">
+                <option value="Engineer">Engineer</option>
+                <option value="Business Development Executive">Business Development Executive</option>
+                <option value="Office Manager/PA">Office Manager/PA</option>
+                <option value="Accountant">Accountant</option>
+                <option value="VR Designer">VR Designer</option>
+              </select>
+          </li>
 
-        <li class="slider_item email_adress">
+          <li class="slider_item">
             <div class="slider_item_form">
-              <p class="form_text">Your email adress</p>
+              <p class="form_text">What is your age?</p>
 
-              <input 
-                id="email_form"
-                type="email"
-                placeholder="Input your email"
-                class="input_slider"
-              >
-          </div>
-        </li>
+              <select name="select" class="select_form select_age">
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+              </select>
+          </li>
 
-        <li class="slider_item password_reg">
-            <div class="slider_item_form">
-              <p class="form_text">Create your password</p>
+          <li class="slider_item location">
+              <div class="slider_item_form">
+                <p class="form_text">I am from</p>
 
-              <input 
-                id="password_form"
-                type="password"
-                placeholder="Input your password"
-                class="input_slider password_form"
-              >
-          </div>
-        </li>
-      </ul>
+                <label></label>
+                <input
+                  id="location_form"
+                  type="text"
+                  placeholder="New Roads, 70760"
+                  class="input_slider"
+                >
+            </div>
+          </li>
+
+          <li class="slider_item email_adress">
+              <div class="slider_item_form">
+                <p class="form_text">Your email adress</p>
+
+                <input 
+                  id="email_form"
+                  type="email"
+                  placeholder="Input your email"
+                  class="input_slider"
+                >
+            </div>
+          </li>
+
+          <li class="slider_item password_reg">
+              <div class="slider_item_form">
+                <p class="form_text">Create your password</p>
+
+                <input 
+                  id="password_form"
+                  type="password"
+                  name="password"
+                  placeholder="Input your password"
+                  class="input_slider password_form"
+                >
+            </div>
+          </li>
+        </ul>
+      </form>
 
       <button id="next_btn" class="primary_btn next_btn">Next step &#62</button>
       <button id="start_btn" class="start_btn">Start now &#10004</button>
@@ -146,5 +148,6 @@
     </div>
   
   </section>
+  <script type="module" src="./script/main.js"></script>
 </body>
 </html>

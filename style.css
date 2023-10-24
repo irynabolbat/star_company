@@ -230,7 +230,6 @@ span {
   background-color: transparent; 
   border-radius: 50%; 
   margin: 0 5px;
-  cursor: pointer;
 }
 
 .slider_point.active {
